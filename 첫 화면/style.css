@@ -1,0 +1,84 @@
+body {
+  background-color: rgb(251, 251, 206);
+  text-align: center;
+  flex-direction: column; /* 세로로 정렬 */
+  align-items: center; /* 가로 가운데 */
+  justify-content: center; /* 세로 가운데 (옵션) */
+}
+
+h1 {
+  text-align: center;
+  position: relative;
+  top: 100px;
+  font-size: 70px;
+  font-family: 'yg-jalnan';
+}
+
+h2 {
+  position: relative;
+  top: 40px;
+  font-size: 20px;
+  text-align: center;
+  font-family: 'Ownglyph_ParkDaHyun';
+}
+
+@font-face {
+  font-family: 'yg-jalnan';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row; /* 세로로 정렬 */
+  align-items: flex-start; /* 가운데 정렬 */
+  gap: 40px; /* 버튼 사이 간격 설정 */
+  margin-top: 150px;
+}
+
+#main-btn,
+#main-btn2 {
+  padding: 60px 50px;
+  background-color: #e5cdcd;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  /* 위치 조절 삭제: 대신 gap으로 간격 정리 */
+}
+
+#main-btn:hover,
+#main-btn2:hover {
+  background-color: #e1babb; /* 마우스 올렸을 때 색 변화 */
+}
+
+/* 이미지 여러 개 배경에 띄우기 */
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.background-container img {
+  position: absolute;
+  width: 200px;
+  animation: float 10s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+  }
+}
