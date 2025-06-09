@@ -56,25 +56,39 @@ h1 {
 }
 
 #main-btn:hover,
-#main-btn2:hover {
+#main-btn2:hover,
+#main-btn3:hover {
   transform: translateY(-5px);
   box-shadow: 2px 2px 0 #a9badf, 6px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+#main-btn3 {
+  font-size: 24px;
+  padding: 40px 60px;
+  background: linear-gradient(to bottom, #f4e3e3, #debfbf);
+  border: none;
+  border-radius: 30px;
+  box-shadow: 4px 4px 0 #7679a1, 8px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  color: #333;
+  font-family: 'LeeSeoyun';
 }
 
 .wave-container {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 600%;
-  height: 300px;
+  width: 900%;
+  height: 150px;
   overflow: hidden;
   z-index: 0;
   opacity: 1;
-  animation: waveScroll 2s ease-in-out infinite;
+  animation: waveScroll 5s ease-in-out infinite;
 }
 
 .wave-container svg {
-  width: 300%;
+  width: 200%;
   height: 100%;
   display: block;
   animation: waveMotion 11s linear infinite;
@@ -93,14 +107,14 @@ h1 {
 }
 
 .white-wave {
-  z-index: 1; /* 기존 파도보다 위 */
-  height: 150px; /* 더 낮은 파도 */
+  z-index: 1;
+  height: 300px;
   opacity: 0.5;
 }
 
 .white-wave svg {
-  width: 300%;
+  width: 100%;
   height: 100%;
   display: block;
-  animation: waveMotion 1s linear infinite; /* 속도 다르게 하면 진짜 물결 느낌 */
+  animation: waveMotion 1s linear infinite;
 }
