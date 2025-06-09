@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>미니 게임</title>
+  </head>
+  <body>
+    <!-- 흰색 얕은 파도 -->
+    <div class="wave-container white-wave">
+      <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+        <path
+          fill="#ffffff"
+          d="M0,160 
+        C 180,80 360,240 540,160 
+        C 720,80 900,240 1080,160 
+        C 1260,80 1440,240 1620,160 
+        L 1620,320 L 0,320 Z"
+        />
+      </svg>
+    </div>
+
+    <!-- 진한 초록 파도 -->
+    <div class="wave-container">
+      <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+        <path
+          fill="#3E8E84"
+          d="M0,160 
+        C 180,60 360,260 540,160 
+        C 720,60 900,260 1080,160 
+        C 1260,60 1440,260 1620,160 
+        L 1620,320 L 0,320 Z"
+        />
+      </svg>
+    </div>
+
+    <h1>Beach</h1>
+    <div class="background-container"></div>
+
+    <div class="button-group">
+      <button id="main-btn" onclick="goToMain()">Main 화면</button>
+      <button id="main-btn2" onclick="goToMain()">게임 설명</button>
+    </div>
+
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
