@@ -17,12 +17,16 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  background-image: url('./images/background.png');
+  background-image: url('./images/배경화면.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
 }
 
 h1 {
@@ -45,76 +49,180 @@ h1 {
 #main-btn2 {
   font-size: 24px;
   padding: 25px 50px;
-  background: linear-gradient(to bottom, #adc6e3, #edebf7);
+  background: linear-gradient(
+    135deg,
+    #b4dfe5,
+    #e3f3f5
+  ); /* 더 부드러운 파스텔 바다색 */
   border: none;
   border-radius: 30px;
-  box-shadow: 4px 4px 0 #7679a1, 8px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  box-shadow: 6px 6px 18px rgba(30, 144, 255, 0.25),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
   cursor: pointer;
-  color: #333;
+  color: #03486c;
   font-family: 'LeeSeoyun';
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(2px); /* 살짝 유리 느낌 */
+}
+
+#main-btn::after,
+#main-btn2::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+}
+
+#main-btn:hover::after,
+#main-btn2:hover::after {
+  left: 100%;
 }
 
 #main-btn:hover,
-#main-btn2:hover,
-#main-btn3:hover {
+#main-btn2:hover {
   transform: translateY(-5px);
-  box-shadow: 2px 2px 0 #a9badf, 6px 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 25px rgba(30, 144, 255, 0.3), 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 #main-btn3 {
   font-size: 24px;
-  padding: 40px 60px;
-  background: linear-gradient(to bottom, #f4e3e3, #debfbf);
+  padding: 45px 50px;
+  background: linear-gradient(135deg, #e9cfd4, #fdfbfb); /* 고급 파스텔 핑크 */
   border: none;
   border-radius: 30px;
-  box-shadow: 4px 4px 0 #7679a1, 8px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
+  box-shadow: 6px 6px 18px rgba(180, 100, 120, 0.25),
+    inset -3px -3px 7px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
   cursor: pointer;
-  color: #333;
+  color: #7a3e4a;
   font-family: 'LeeSeoyun';
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(2px);
+}
+
+#main-btn3::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+}
+
+#main-btn3:hover::after {
+  left: 100%;
+}
+
+#main-btn3:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(180, 100, 120, 0.3),
+    0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+#sponge-img {
+  position: fixed;
+  bottom: 90px;
+  left: 240px;
+  width: 200px;
+  z-index: 1000;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
+  animation: float 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
+}
+
+#darami-img {
+  position: fixed;
+  bottom: 90px;
+  left: 1000px;
+  width: 180px;
+  z-index: 1000;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
+  animation: float 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
+}
+
+.bubble-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.bubble {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url('images/비눗방울.png');
+  background-size: cover;
+  opacity: 0.4;
+  animation: floatUp 8s ease-in-out infinite;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-20px, -50vh) scale(1);
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(20px, -100vh) scale(1.2);
+    opacity: 0;
+  }
 }
 
 .wave-container {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 900%;
-  height: 150px;
-  overflow: hidden;
+  width: 100%;
+  height: 200px;
   z-index: 0;
-  opacity: 1;
-  animation: waveScroll 5s ease-in-out infinite;
+  overflow: hidden;
 }
 
-.wave-container svg {
+.wave-svg {
   width: 200%;
   height: 100%;
-  display: block;
-  animation: waveMotion 11s linear infinite;
+  animation: waveMotion 3s ease-in-out infinite;
 }
 
-@keyframes waveScroll {
+@keyframes waveMotion {
   0% {
-    transform: translateX(0) translateY(0);
+    transform: translateX(0);
   }
   50% {
-    transform: translateX(-25%) translateY(70px);
+    transform: translateX(-25%);
   }
   100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(0);
   }
-}
-
-.white-wave {
-  z-index: 1;
-  height: 300px;
-  opacity: 0.5;
-}
-
-.white-wave svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  animation: waveMotion 1s linear infinite;
 }
