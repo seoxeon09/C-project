@@ -17,7 +17,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('./images/배경화면.png');
+  background-image: url('/images/다운로드_\(13\)_upscaled.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -33,9 +33,27 @@ h1 {
   text-align: center;
   font-size: 64px;
   margin-top: 100px;
-  color: #463f41;
-  text-shadow: 3px 3px 0 #ffffff, 6px 6px 0 rgba(0, 0, 0, 0.1);
+  color: #f6f6f6;
+  text-shadow: 3px 3px 0 #b4b23f, 6px 6px 0 rgba(163, 171, 47, 0.1);
   font-family: 'KCC-Ganpan';
+}
+
+h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 40px;
+  color: #e65050;
+  text-shadow: 3px 3px 0 #ccccc3;
+
+  font-family: 'Ownglyph_meetme-Rg';
+}
+
+@font-face {
+  font-family: 'Ownglyph_meetme-Rg';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/Ownglyph_meetme-Rg.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .button-group {
@@ -141,23 +159,69 @@ h1 {
 #sponge-img {
   position: fixed;
   bottom: 90px;
-  left: 240px;
+  left: 270px;
   width: 200px;
-  z-index: 1000;
+  z-index: -1;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
-  animation: float 3s ease-in-out infinite;
-  animation: float 3s ease-in-out infinite;
+  animation: walk 10s linear infinite;
 }
 
-#darami-img {
+@keyframes walk {
+  0% {
+    left: 250px;
+    transform: translateY(0px) scaleX(1);
+  }
+  25% {
+    transform: translateY(-5px) scaleX(1);
+  }
+  50% {
+    left: 25vw;
+    transform: translateY(0px) scaleX(1);
+  }
+  51% {
+    transform: scaleX(-1); /* 좌우 반전: 뒤돌기 */
+  }
+  75% {
+    transform: translateY(-5px) scaleX(-1);
+  }
+  100% {
+    left: 30px;
+    transform: translateY(0px) scaleX(-1);
+  }
+}
+
+#pig-img {
   position: fixed;
-  bottom: 90px;
-  left: 1000px;
-  width: 180px;
-  z-index: 1000;
+  bottom: 120px;
+  left: 270px;
+  width: 200px;
+  z-index: -1;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
-  animation: float 3s ease-in-out infinite;
-  animation: float 3s ease-in-out infinite;
+  animation: walk2 10s linear infinite;
+}
+
+@keyframes walk2 {
+  0% {
+    left: 250px;
+    transform: translateY(0px) scaleX(1);
+  }
+  25% {
+    transform: translateY(-5px) scaleX(1);
+  }
+  50% {
+    left: 65vw;
+    transform: translateY(0px) scaleX(1);
+  }
+  51% {
+    transform: scaleX(-1); /* 좌우 반전: 뒤돌기 */
+  }
+  75% {
+    transform: translateY(-5px) scaleX(-1);
+  }
+  100% {
+    left: 40px;
+    transform: translateY(0px) scaleX(-1);
+  }
 }
 
 .bubble-container {
@@ -167,34 +231,34 @@ h1 {
   z-index: -1;
 }
 
+.bubble-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
 .bubble {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  background-image: url('images/비눗방울.png');
-  background-size: cover;
-  opacity: 0.4;
-  animation: floatUp 8s ease-in-out infinite;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  bottom: -100px;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
 @keyframes floatUp {
   0% {
-    transform: translate(0, 0) scale(0.8);
-    opacity: 0;
-  }
-  30% {
-    opacity: 0.8;
-  }
-  50% {
-    transform: translate(-20px, -50vh) scale(1);
-  }
-  80% {
-    opacity: 0.5;
+    transform: translateY(0);
+    opacity: 2;
   }
   100% {
-    transform: translate(20px, -100vh) scale(1.2);
+    transform: translateY(-110vh);
     opacity: 0;
   }
 }
