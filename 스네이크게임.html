@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Snake 게임</title>
+  </head>
+  <body>
+    <h1>Snake 게임</h1>
+    <div id="score">점수: 0</div>
+    <div id="gameBoard"></div>
+    <div id="gameOver"></div>
+
+    <script>
+      const WIDTH = 40;
+      const HEIGHT = 20;
+      const MAX_SNAKE = 100;
+
+      // 게임판 만들기
+      const gameBoard = document.getElementById('gameBoard');
+      const scoreDisplay = document.getElementById('score');
+      const gameOverDisplay = document.getElementById('gameOver');
+
+      // 방향: 0=위, 1=오른쪽, 2=아래, 3=왼쪽
+      let direction = 3;
+      let gameover = false;
+
+      // 뱀 배열, 첫 5칸 초기 위치
+      let snake = [];
+      let snake_length = 5;
+
+      // 음식 위치
+      let food = { x: 0, y: 0 };
+
+      // 셀들 저장
+      let cells = [];
+
+      // 초기 세팅
+      function init() {
+        gameBoard.innerHTML = '';
+        cells = [];
+
+        // 그리드 셀 만들기
+        for (let y = 0; y < HEIGHT; y++) {
+          for (let x = 0; x < WIDTH; x++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+
+            // 벽 만들기 (가장자리)
+            if (x === 0 || x === WIDTH - 1 || y === 0 || y === HEIGHT - 1) {
+              cell.classList.add('wall');
+            }
+
+            gameBoard.appendChild(cell);
+            cells.push(cell);
+          }
+        }
+
+        // 뱀 초기 위치 중앙 오른쪽으로
+        snake = [];
+        for (let i = 0; i < snake_length; i++) {
+          snake.push({
+            x: Math.floor(WIDTH / 2) + i,
+            y: Math.floor(HEIGHT / 2),
+          });
+        }
+
+        direction = 3; // 왼쪽
+        gameover = false;
+        gameOverDisplay.textContent = '';
+
+        placeFood();
+        update();
+      }
+
+      // 음식 랜덤 위치 지정 (벽과 뱀 자리 피하기)
+      function placeFood() {
+        while (true) {
+          food.x = Math.floor(Math.random() * (WIDTH - 2)) + 1;
+          food.y = Math.floor(Math.random() * (HEIGHT - 2)) + 1;
+
+          // 뱀 몸통에 없으면 OK
+          if (!snake.some((s) => s.x === food.x && s.y === food.y)) break;
+        }
+      }
+
+      // 그리드 좌표를 배열 인덱스로 변환
+      function getIndex(x, y) {
+        return y * WIDTH + x;
+      }
+
+      // 게임판 업데이트 함수
+      function update() {
+        if (gameover) return;
+
+        // 뱀 이동
+        let head = { ...snake[0] };
+
+        if (direction === 0) head.y--;
+        else if (direction === 1) head.x++;
+        else if (direction === 2) head.y++;
+        else if (direction === 3) head.x--;
+
+        // 벽 충돌 체크
+        if (
+          head.x === 0 ||
+          head.x === WIDTH - 1 ||
+          head.y === 0 ||
+          head.y === HEIGHT - 1
+        ) {
+          endGame();
+          return;
+        }
+
+        // 자기 몸과 충돌 체크
+        if (snake.some((s) => s.x === head.x && s.y === head.y)) {
+          endGame();
+          return;
+        }
+
+        // 뱀 이동 (몸통 따라가기)
+        snake.pop();
+        snake.unshift(head);
+
+        // 음식 먹었을 때
+        if (head.x === food.x && head.y === food.y) {
+          if (snake_length < MAX_SNAKE) {
+            snake_length++;
+            // 길이 늘리기 위해 꼬리 다시 붙이기
+            snake.push({ ...snake[snake.length - 1] });
+          }
+          placeFood();
+        }
+
+        draw();
+
+        // 점수 표시
+        scoreDisplay.textContent = '점수: ' + (snake_length - 5);
+
+        // 100ms마다 재귀 호출로 게임 진행
+        if (!gameover) {
+          setTimeout(update, 100);
+        }
+      }
+
+      // 화면 그리기 함수
+      function draw() {
+        // 전체 셀 초기화
+        cells.forEach((cell) => {
+          cell.className = 'cell'; // 초기화 (벽 제거)
+        });
+
+        // 벽 다시 표시
+        for (let y = 0; y < HEIGHT; y++) {
+          for (let x = 0; x < WIDTH; x++) {
+            if (x === 0 || x === WIDTH - 1 || y === 0 || y === HEIGHT - 1) {
+              cells[getIndex(x, y)].classList.add('wall');
+            }
+          }
+        }
+
+        // 음식 표시
+        cells[getIndex(food.x, food.y)].classList.add('food');
+
+        // 뱀 몸통 표시
+        snake.forEach((s, idx) => {
+          if (idx === 0) cells[getIndex(s.x, s.y)].classList.add('snake-head');
+          else cells[getIndex(s.x, s.y)].classList.add('snake-body');
+        });
+      }
+
+      // 게임 종료 함수
+      function endGame() {
+        gameover = true;
+        gameOverDisplay.textContent =
+          '헉! 집게사장한테 결국 잡혔군요: ' + (snake_length - 5);
+      }
+
+      // 방향키 이벤트
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp' && direction !== 2) direction = 0;
+        else if (e.key === 'ArrowRight' && direction !== 3) direction = 1;
+        else if (e.key === 'ArrowDown' && direction !== 0) direction = 2;
+        else if (e.key === 'ArrowLeft' && direction !== 1) direction = 3;
+      });
+
+      // 게임 시작
+      init();
+    </script>
+  </body>
+</html>

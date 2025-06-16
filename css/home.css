@@ -169,7 +169,7 @@ h2 {
 @keyframes walk {
   0% {
     left: 250px;
-    transform: translateY(0px) scaleX(1);
+    transform: translateY(10px) scaleX(1);
   }
   25% {
     transform: translateY(-5px) scaleX(1);
@@ -179,7 +179,7 @@ h2 {
     transform: translateY(0px) scaleX(1);
   }
   51% {
-    transform: scaleX(-1); /* 좌우 반전: 뒤돌기 */
+    transform: scaleX(-1);
   }
   75% {
     transform: translateY(-5px) scaleX(-1);

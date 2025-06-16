@@ -7,17 +7,33 @@
     <title>미니 게임</title>
   </head>
   <body>
+    <audio id="bg-music" autoplay loop muted>
+      <source
+        src="audio/SpongeBob SquarePants Closing Theme Song INCOMPLETE.mp3"
+        type="audio/mpeg"
+      />
+      브라우저가 오디오를 지원하지 않아요 😢
+    </audio>
+
+    <!-- 🎵 음악 재생 버튼 -->
+    <div style="text-align: center; margin-top: 10px">
+      <button onclick="playMusic()">🎵 음악 재생하기</button>
+    </div>
     <h1>SPONGEBOB</h1>
     <h2>집게사장을 피하세요!</h2>
     <div class="background-container"></div>
 
     <div class="button-group">
-      <button id="main-btn" onclick="goToMain()">Snake 게임</button>
-      <button id="main-btn2" onclick="goToMain()">지뢰 찾기</button>
+      <button id="main-btn" onclick="location.href='snake.html'">
+        Snake 게임
+      </button>
+      <button id="main-btn2" onclick="location.href='.html'">지뢰 찾기</button>
     </div>
 
     <div class="button-group">
-      <button id="main-btn3" onclick="goToMain()">게임 설명</button>
+      <button id="main-btn3" onclick="location.href='tutorial.html'">
+        게임 설명
+      </button>
     </div>
 
     <div class="bubble-container"></div>

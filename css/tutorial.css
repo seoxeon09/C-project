@@ -127,38 +127,3 @@ body {
   }
 }
 
-.arrow-button {
-  display: inline-block;
-  padding: 15px 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #ffffff;
-  background: #ffcece; /* 하늘색 */
-  border: none;
-  border-radius: 50px;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 0 8px 20px rgba(0, 174, 255, 0.4);
-}
-
-.arrow-button::before {
-  position: absolute;
-  left: 140px;
-  top: 20%;
-  transform: translateY(-50%);
-  font-size: 20px;
-  transition: transform 0.4s ease;
-}
-
-.arrow-button:hover {
-  background: #4ebeff; /* 진한 하늘색 */
-  color: #fff;
-  transform: translateX(-10px);
-  box-shadow: 0 12px 24px rgba(0, 174, 255, 0.6);
-}
-
-.arrow-button:hover::before {
-  transform: translateY(-50%) translateX(-6px);
-}

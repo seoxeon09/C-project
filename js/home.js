@@ -21,8 +21,13 @@ for (let i = 0; i < bubbleCount; i++) {
   // 랜덤 애니메이션 시간 (8 ~ 10초)
   bubble.style.animationDuration = `${8 + Math.random() * 7}s`;
 
-  // 랜덤 애니메이션 시작 지연 (0 ~ 10초)
   bubble.style.animationDelay = `${Math.random() * 15}s`;
 
   bubbleContainer.appendChild(bubble);
+}
+
+function playMusic() {
+  const audio = document.getElementById('bg-music');
+  audio.muted = false;
+  audio.play();
 }
