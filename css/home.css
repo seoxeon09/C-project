@@ -17,7 +17,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('/images/다운로드_\(13\)_upscaled.jpeg');
+  background-image: url('/images/홈화면\ 배경.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -42,7 +42,7 @@ h2 {
   text-align: center;
   font-size: 30px;
   margin-bottom: 40px;
-  color: #e65050;
+  color: #e11b1b;
   text-shadow: 3px 3px 0 #ccccc3;
 
   font-family: 'Ownglyph_meetme-Rg';
@@ -67,11 +67,7 @@ h2 {
 #main-btn2 {
   font-size: 24px;
   padding: 25px 50px;
-  background: linear-gradient(
-    135deg,
-    #b4dfe5,
-    #e3f3f5
-  ); /* 더 부드러운 파스텔 바다색 */
+  background: linear-gradient(135deg, #b4dfe5, #e3f3f5);
   border: none;
   border-radius: 30px;
   box-shadow: 6px 6px 18px rgba(30, 144, 255, 0.25),
@@ -82,7 +78,7 @@ h2 {
   font-family: 'LeeSeoyun';
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(2px); /* 살짝 유리 느낌 */
+  backdrop-filter: blur(2px);
 }
 
 #main-btn::after,
@@ -213,7 +209,7 @@ h2 {
     transform: translateY(0px) scaleX(1);
   }
   51% {
-    transform: scaleX(-1); /* 좌우 반전: 뒤돌기 */
+    transform: scaleX(-1);
   }
   75% {
     transform: translateY(-5px) scaleX(-1);
@@ -289,4 +285,9 @@ h2 {
   100% {
     transform: translateX(0);
   }
+}
+
+#music-btn {
+  border-radius: 10px;
+  border: none;
 }

@@ -1,5 +1,5 @@
 body {
-  background-image: url('/images/다운로드\ \(15\)\ \(2\)\ \(1\).jpeg');
+  background-image: url('/images/다운로드\ \(19\)\ \(1\).jpeg');
   font-family: 'HakgyoansimDunggeunmisoTTF-B';
   text-align: center;
   margin: 0;
@@ -74,4 +74,51 @@ h1 {
   font-weight: bold;
   margin-top: 15px;
   white-space: pre-line;
+}
+
+#startButton {
+  font-size: 24px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background-color: #a1d4ed;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+#startButton:hover {
+  background-color: #819afc;
+  transform: scale(1.05);
+}
+
+.bubble-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  animation-name: float;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
 }

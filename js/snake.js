@@ -1,14 +1,11 @@
-// C 스타일 스네이크 게임의 JS 구현
 const WIDTH = 40;
 const HEIGHT = 20;
 const MAX_SNAKE = 100;
 
-// 게임판 요소
 const gameBoard = document.getElementById('gameBoard');
 const scoreDisplay = document.getElementById('score');
 const gameOverDisplay = document.getElementById('gameOver');
 
-// 방향 상수 (C처럼 define한 것처럼 사용)
 const UP = 0,
   RIGHT = 1,
   DOWN = 2,
@@ -18,23 +15,18 @@ let direction = LEFT;
 let nextDirection = LEFT;
 let gameover = false;
 
-// 뱀 구조체 배열 (C 스타일)
 let snake = new Array(MAX_SNAKE);
 let snake_length = 5;
 
-// 음식 위치 구조체
 let food = { x: 0, y: 0 };
 
-// 셀 배열 (그리드)
 let cells = [];
 
-// 초기화 함수
 function init() {
   snake_length = 5;
   gameBoard.innerHTML = '';
   cells = [];
 
-  // 격자판 초기화
   for (let y = 0; y < HEIGHT; y++) {
     for (let x = 0; x < WIDTH; x++) {
       const cell = document.createElement('div');
@@ -47,7 +39,6 @@ function init() {
     }
   }
 
-  // 뱀 초기 위치 (중앙에서 오른쪽으로)
   const midX = Math.floor(WIDTH / 2);
   const midY = Math.floor(HEIGHT / 2);
   for (let i = 0; i < snake_length; i++) {
@@ -63,7 +54,6 @@ function init() {
   update();
 }
 
-// 음식 위치 지정
 function placeFood() {
   while (true) {
     let fx = Math.floor(Math.random() * (WIDTH - 2)) + 1;
@@ -85,16 +75,13 @@ function placeFood() {
   }
 }
 
-// 좌표를 인덱스로 변환
 function getIndex(x, y) {
   return y * WIDTH + x;
 }
 
-// 게임 상태 업데이트
 function update() {
   if (gameover) return;
 
-  // 반대방향 이동 막기
   if (
     (nextDirection === UP && direction !== DOWN) ||
     (nextDirection === RIGHT && direction !== LEFT) ||
@@ -104,14 +91,12 @@ function update() {
     direction = nextDirection;
   }
 
-  // 머리 위치 계산 (C 스타일 구조체 복사)
   let head = { x: snake[0].x, y: snake[0].y };
   if (direction === UP) head.y--;
   else if (direction === RIGHT) head.x++;
   else if (direction === DOWN) head.y++;
   else if (direction === LEFT) head.x--;
 
-  // 벽 충돌
   if (
     head.x === 0 ||
     head.x === WIDTH - 1 ||
@@ -122,7 +107,6 @@ function update() {
     return;
   }
 
-  // 몸 충돌
   for (let i = 0; i < snake_length; i++) {
     if (snake[i].x === head.x && snake[i].y === head.y) {
       endGame();
@@ -130,18 +114,14 @@ function update() {
     }
   }
 
-  // 몸통 이동 (C처럼 배열 뒤에서부터 앞으로 이동)
   for (let i = snake_length - 1; i > 0; i--) {
     snake[i] = { x: snake[i - 1].x, y: snake[i - 1].y };
   }
 
-  // 머리 갱신
   snake[0] = head;
 
-  // 음식 먹었는지 확인
   if (head.x === food.x && head.y === food.y) {
     if (snake_length < MAX_SNAKE) {
-      // 새로운 꼬리 추가 (현재 꼬리 복사)
       snake[snake_length] = {
         x: snake[snake_length - 1].x,
         y: snake[snake_length - 1].y,
@@ -159,7 +139,6 @@ function update() {
   }
 }
 
-// 게임판 그리기
 function draw() {
   for (let i = 0; i < cells.length; i++) {
     cells[i].className = 'cell';
@@ -183,7 +162,6 @@ function draw() {
   }
 }
 
-// 게임 종료
 function endGame() {
   gameover = true;
   gameOverDisplay.textContent =
@@ -192,7 +170,6 @@ function endGame() {
     '점\n엔터키로 다시 시작해요!';
 }
 
-// 방향 입력 처리 (C 느낌으로 switch 사용)
 window.addEventListener('keydown', (e) => {
   const key = e.key.toLowerCase();
 
@@ -215,5 +192,32 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// 게임 시작
-init();
+const startButton = document.getElementById('startButton');
+startButton.addEventListener('click', () => {
+  document.getElementById('score').style.display = 'block';
+  document.getElementById('gameBoard').style.display = 'grid';
+  document.getElementById('gameOver').style.display = 'block';
+  startButton.style.display = 'none';
+  init();
+});
+
+const bubbleContainer = document.querySelector('.bubble-container');
+const bubbleCount = 20;
+const bubbleImgSrc = '/images/비눗방울.png';
+
+for (let i = 0; i < bubbleCount; i++) {
+  const bubble = document.createElement('img');
+  bubble.src = bubbleImgSrc;
+  bubble.classList.add('bubble');
+
+  bubble.style.left = `${Math.random() * 90}vw`;
+
+  const size = 30 + Math.random() * 40;
+  bubble.style.width = `${size}px`;
+
+  bubble.style.animationDuration = `${8 + Math.random() * 7}s`;
+
+  bubble.style.animationDelay = `${Math.random() * 15}s`;
+
+  bubbleContainer.appendChild(bubble);
+}
