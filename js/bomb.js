@@ -118,3 +118,18 @@ for (let i = 0; i < bubbleCount; i++) {
 
   bubbleContainer.appendChild(bubble);
 }
+
+function resetBoard() {
+  opened = 0;
+  board = [];
+  realBoard = [];
+  boardEl.innerHTML = ''; // 기존 보드 지우기
+  document.getElementById('result').textContent = ''; // 결과 텍스트 초기화
+  initBoard(); // 다시 보드 만들기
+}
+
+window.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    resetBoard();
+  }
+});

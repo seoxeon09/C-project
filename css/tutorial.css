@@ -126,3 +126,36 @@ body {
     opacity: 0;
   }
 }
+
+.home-button-container {
+  display: flex;
+  justify-content: center; /* 가로 중앙 */
+  align-items: center; /* 세로 중앙 */
+  height: 100vh; /* 화면 전체 높이 */
+}
+
+#home-btn {
+  background-color: #8fd3f4; /* 밝은 파랑 느낌 */
+  border: 2px solid #61b0f6;
+  border-radius: 15px; /* 둥글게 */
+  padding: 12px 24px;
+  font-size: 18px;
+  color: white;
+  font-family: 'KCC-Ganpan';
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#home-btn:hover {
+  background-color: #61b0f6;
+  transform: scale(1.05);
+}
+
+@font-face {
+  font-family: 'KCC-Ganpan';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
