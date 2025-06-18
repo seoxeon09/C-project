@@ -129,26 +129,28 @@ body {
 
 .home-button-container {
   display: flex;
-  justify-content: center; /* 가로 중앙 */
-  align-items: center; /* 세로 중앙 */
-  height: 100vh; /* 화면 전체 높이 */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #home-btn {
-  background-color: #8fd3f4; /* 밝은 파랑 느낌 */
-  border: 2px solid #61b0f6;
-  border-radius: 15px; /* 둥글게 */
-  padding: 12px 24px;
+  background-color: #76bc62;
+  border: 2px solid #478244;
+  border-radius: 15px;
+  padding: 20px 15px;
   font-size: 18px;
   color: white;
   font-family: 'KCC-Ganpan';
-  cursor: pointer;
   transition: 0.3s;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  right: 540px;
+  bottom: 270px;
 }
 
 #home-btn:hover {
-  background-color: #61b0f6;
+  background-color: #559944;
   transform: scale(1.05);
 }
 

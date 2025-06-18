@@ -13,9 +13,25 @@
     <div id="gameBoard"></div>
     <div id="gameOver"></div>
 
-    <button id="home-btn" onclick="location.href='home.html'"></button>
+    <div class="home-button-container">
+      <button id="home-btn" onclick="location.href='home.html'">
+        메인화면🏠
+      </button>
+    </div>
 
     <div class="bubble-container"></div>
+
+    <audio id="bg-music" autoplay loop muted>
+      <source
+        src="audio/SpongeBob SquarePants Production Music The Rake Hornpipe.mp3"
+        type="audio/mpeg"
+      />
+      브라우저가 오디오를 지원하지 않아요 😢
+    </audio>
+
+    <div style="text-align: center; margin-top: 10px">
+      <button id="music-btn" onclick="playMusic()">🎵 음악 재생하기</button>
+    </div>
 
     <script type="text/javascript" src="/js/snake.js"></script>
   </body>

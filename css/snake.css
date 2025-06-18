@@ -122,3 +122,71 @@ h1 {
     opacity: 0;
   }
 }
+
+#music-btn {
+  border-radius: 10px;
+  border: none;
+  position: fixed;
+  bottom: 40px;
+}
+
+#home-btn {
+  background-color: #bf9a9a;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  bottom: 540px;
+  left: 400px;
+}
+
+#home-btn:hover {
+  background-color: #9d6262;
+  transform: scale(1.05);
+  position: relative;
+}
+
+#home-btn:active {
+  background-color: #3e8e41;
+  transform: scale(0.98);
+}
+
+.home-button-container {
+  display: flex;
+  position: relative;
+  top: 50px;
+}
+
+#home-btn {
+  background-color: #76bc62;
+  border: 2px solid #478244;
+  border-radius: 15px;
+  padding: 20px 15px;
+  font-size: 18px;
+  color: white;
+  font-family: 'KCC-Ganpan';
+  transition: 0.3s;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  right: 540px;
+  bottom: 270px;
+  display: none;
+}
+
+#home-btn:hover {
+  background-color: #559944;
+  transform: scale(1.05);
+}
+
+@font-face {
+  font-family: 'KCC-Ganpan';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}

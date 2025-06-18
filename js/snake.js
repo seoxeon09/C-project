@@ -221,3 +221,9 @@ for (let i = 0; i < bubbleCount; i++) {
 
   bubbleContainer.appendChild(bubble);
 }
+
+function playMusic() {
+  const audio = document.getElementById('bg-music');
+  audio.muted = false;
+  audio.play();
+}
