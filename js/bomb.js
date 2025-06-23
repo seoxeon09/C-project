@@ -1,5 +1,5 @@
-const SIZE = 8;
-const MINES = 8;
+let SIZE = 8;
+let MINES = 8;
 let opened = 0;
 let board = [];
 let realBoard = [];
@@ -54,8 +54,15 @@ function countMines(x, y) {
 function cellClicked(e) {
   const x = parseInt(e.target.dataset.x);
   const y = parseInt(e.target.dataset.y);
-  const cell = e.target;
+  openCell(x, y);
+  if (opened === SIZE * SIZE - MINES) {
+    document.getElementById('result').textContent = '무사히 통과하셨습니다!';
+    revealAll();
+  }
+}
 
+function openCell(x, y) {
+  const cell = boardEl.rows[x].cells[y];
   if (cell.classList.contains('opened')) return;
 
   if (realBoard[x][y] === '*') {
@@ -70,13 +77,20 @@ function cellClicked(e) {
   }
 
   const count = countMines(x, y);
-  cell.textContent = count;
+  cell.textContent = count === 0 ? '' : count;
   cell.classList.add('opened');
   opened++;
 
-  if (opened === SIZE * SIZE - MINES) {
-    document.getElementById('result').textContent = '무사히 통과하셨습니다!';
-    revealAll();
+  if (count === 0) {
+    const dx = [-1, -1, -1, 0, 0, 1, 1, 1];
+    const dy = [-1, 0, 1, -1, 1, -1, 0, 1];
+    for (let i = 0; i < 8; i++) {
+      const nx = x + dx[i];
+      const ny = y + dy[i];
+      if (nx >= 0 && nx < SIZE && ny >= 0 && ny < SIZE) {
+        openCell(nx, ny);
+      }
+    }
   }
 }
 
@@ -89,43 +103,20 @@ function revealAll() {
         cell.classList.add('mine');
       } else if (!cell.classList.contains('opened')) {
         const count = countMines(i, j);
-        cell.textContent = count;
+        cell.textContent = count === 0 ? '' : count;
         cell.classList.add('opened');
       }
     }
   }
 }
 
-initBoard();
-
-const bubbleContainer = document.querySelector('.bubble-container');
-const bubbleCount = 20;
-const bubbleImgSrc = '/images/비눗방울.png';
-
-for (let i = 0; i < bubbleCount; i++) {
-  const bubble = document.createElement('img');
-  bubble.src = bubbleImgSrc;
-  bubble.classList.add('bubble');
-
-  bubble.style.left = `${Math.random() * 90}vw`;
-
-  const size = 30 + Math.random() * 40;
-  bubble.style.width = `${size}px`;
-
-  bubble.style.animationDuration = `${8 + Math.random() * 7}s`;
-
-  bubble.style.animationDelay = `${Math.random() * 15}s`;
-
-  bubbleContainer.appendChild(bubble);
-}
-
 function resetBoard() {
   opened = 0;
   board = [];
   realBoard = [];
-  boardEl.innerHTML = ''; // 기존 보드 지우기
-  document.getElementById('result').textContent = ''; // 결과 텍스트 초기화
-  initBoard(); // 다시 보드 만들기
+  boardEl.innerHTML = '';
+  document.getElementById('result').textContent = '';
+  initBoard();
 }
 
 window.addEventListener('keydown', function (e) {
@@ -133,3 +124,36 @@ window.addEventListener('keydown', function (e) {
     resetBoard();
   }
 });
+
+function setDifficulty(level) {
+  if (level === 'easy') {
+    SIZE = 8;
+    MINES = 8;
+  } else if (level === 'medium') {
+    SIZE = 12;
+    MINES = 20;
+  } else if (level === 'hard') {
+    SIZE = 16;
+    MINES = 40;
+  }
+  resetBoard();
+}
+
+initBoard();
+
+// 비눗방울 애니메이션
+const bubbleContainer = document.querySelector('.bubble-container');
+const bubbleCount = 20;
+const bubbleImgSrc = '/images/비눗방울.png'; // 이미지 경로를 너가 사용 중인 걸로 맞춰줘!
+
+for (let i = 0; i < bubbleCount; i++) {
+  const bubble = document.createElement('img');
+  bubble.src = bubbleImgSrc;
+  bubble.classList.add('bubble');
+  bubble.style.left = `${Math.random() * 90}vw`;
+  const size = 30 + Math.random() * 40;
+  bubble.style.width = `${size}px`;
+  bubble.style.animationDuration = `${8 + Math.random() * 7}s`;
+  bubble.style.animationDelay = `${Math.random() * 15}s`;
+  bubbleContainer.appendChild(bubble);
+}
