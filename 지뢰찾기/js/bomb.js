@@ -107,5 +107,3 @@ function disableClicks() {
 
 
 initBoard();
-
-

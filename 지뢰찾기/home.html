@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <title>미니 게임</title>
+  </head>
+  <body>
+    <audio id="bg-music" autoplay loop muted>
+      <source
+        src="audio/SpongeBob SquarePants Closing Theme Song INCOMPLETE.mp3"
+        type="audio/mpeg"
+      />
+      브라우저가 오디오를 지원하지 않아요 😢
+    </audio>
+
+    <div style="text-align: center; margin-top: 10px">
+      <button id="music-btn" onclick="playMusic()">🎵 음악 재생하기</button>
+    </div>
+    <h1>SPONGEBOB</h1>
+    <h2>집게사장을 피하세요!</h2>
+    <div class="background-container"></div>
+
+    <div class="button-group">
+      <button id="main-btn" onclick="location.href='snake.html'">
+        Snake 게임
+      </button>
+      <button id="main-btn2" onclick="location.href='bomb.html'">
+        지뢰 찾기
+      </button>
+    </div>
+
+    <div class="button-group">
+      <button id="main-btn3" onclick="location.href='tutorial.html'">
+        게임 설명
+      </button>
+    </div>
+
+    <div class="bubble-container"></div>
+
+    <img src="images/스폰지밥.png" alt="스폰지밥" id="sponge-img" width="200" />
+
+    <img src="images/뚱이.png" alt="뚱이" id="pig-img" width="200" />
+
+    <script type="text/javascript" src="/js/home.js"></script>
+    <div class="wave-container">
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="none" class="wave-svg">
+        <path
+          d="M0,100 C300,250 900,-50 1200,100 L1200,200 L0,200 Z"
+          fill="#61B0F6"
+        ></path>
+        <defs>
+          <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#61B0F6" />
+            <stop offset="100%" stop-color="#ffffff" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </body>
+</html>

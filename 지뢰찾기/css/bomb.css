@@ -1,0 +1,99 @@
+body {
+  background: url('/images/지뢰찾기\ 배경.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Comic Sans MS', 'Fredoka', sans-serif;
+  color: #fff;
+  text-align: center;
+  padding-top: 30px;
+}
+
+h1 {
+  font-family: 'Ownglyph_ParkDaHyun';
+  color: #ffeb3b;
+  font-size: 55px;
+  text-shadow: 2px 2px #000;
+}
+
+@font-face {
+  font-family: 'Ownglyph_ParkDaHyun';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+table {
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+td {
+  width: 70px;
+  height: 60px;
+  font-size: 1.5rem;
+  background-color: #00bcd4;
+  border: 2px solid #0288d1;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+}
+
+td.opened {
+  background-color: #4dd0e1;
+  cursor: default;
+}
+
+td.mine {
+  background-color: #e53935;
+}
+
+@font-face {
+  font-family: 'Ownglyph_ParkDaHyun';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+#result {
+  font-family: 'Ownglyph_ParkDaHyun';
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.bubble-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.bubble-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 2;
+  }
+  100% {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
