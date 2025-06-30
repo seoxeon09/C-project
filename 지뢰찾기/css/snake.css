@@ -1,5 +1,5 @@
 body {
-  background-image: url('/images/다운로드\ \(19\)\ \(1\).jpeg');
+  background-image: url('../images/snake.png');
   font-family: 'HakgyoansimDunggeunmisoTTF-B';
   text-align: center;
   margin: 0;
@@ -19,6 +19,7 @@ h1 {
   font-size: 48px;
   color: #ffffff;
   text-shadow: 2px 2px #0080a5;
+
   margin-bottom: 20px;
 }
 
@@ -86,6 +87,8 @@ h1 {
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s, background-color 0.2s;
+  z-index: 10;
+  position: relative;
 }
 
 #startButton:hover {
@@ -130,56 +133,30 @@ h1 {
   bottom: 40px;
 }
 
-#home-btn {
-  background-color: #bf9a9a;
-  color: white;
-  padding: 12px 24px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  position: relative;
-  bottom: 540px;
-  left: 400px;
-}
-
-#home-btn:hover {
-  background-color: #9d6262;
-  transform: scale(1.05);
-  position: relative;
-}
-
-#home-btn:active {
-  background-color: #3e8e41;
-  transform: scale(0.98);
-}
-
 .home-button-container {
-  display: flex;
-  position: relative;
-  top: 50px;
+  position: fixed;
+  bottom: 30px;
+  right: 648px;
+  top: 24px;
+  z-index: 10;
+  margin-bottom: 20px;
 }
 
 #home-btn {
-  background-color: #76bc62;
-  border: 2px solid #478244;
+  background-color: #ff8243;
+  border: 2px solid hsl(54, 62%, 78%);
   border-radius: 15px;
-  padding: 20px 15px;
+  padding: 15px 20px;
   font-size: 18px;
   color: white;
   font-family: 'KCC-Ganpan';
   transition: 0.3s;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  position: relative;
-  right: 540px;
-  bottom: 270px;
-  display: none;
+  cursor: pointer;
 }
 
 #home-btn:hover {
-  background-color: #559944;
+  background-color: #ffe30e;
   transform: scale(1.05);
 }
 

@@ -1,6 +1,6 @@
 const bubbleContainer = document.querySelector('.bubble-container');
 const bubbleCount = 20;
-const bubbleImgSrc = '/images/비눗방울.png';
+const bubbleImgSrc = 'images/비눗방울.png';
 
 for (let i = 0; i < bubbleCount; i++) {
   const bubble = document.createElement('img');

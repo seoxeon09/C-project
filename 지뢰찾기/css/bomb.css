@@ -1,5 +1,5 @@
 body {
-  background: url('/images/지뢰찾기\ 배경.png') no-repeat center center fixed;
+  background: url('../images/bomb.png') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Comic Sans MS', 'Fredoka', sans-serif;
   color: #fff;
@@ -96,4 +96,39 @@ td.mine {
     transform: translateY(-110vh);
     opacity: 0;
   }
+}
+
+.home-button-container {
+  position: fixed;
+  bottom: 30px;
+  right: 60px;
+  top: 35px;
+  z-index: 10;
+  margin-bottom: 20px;
+}
+
+#home-btn {
+  background-color: #ff8243;
+  border: 2px solid hsl(54, 62%, 78%);
+  border-radius: 15px;
+  padding: 15px 20px;
+  font-size: 18px;
+  color: white;
+  font-family: 'KCC-Ganpan';
+  transition: 0.3s;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+#home-btn:hover {
+  background-color: #ffe30e;
+  transform: scale(1.05);
+}
+
+@font-face {
+  font-family: 'KCC-Ganpan';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }

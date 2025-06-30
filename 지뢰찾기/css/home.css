@@ -17,7 +17,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('/images/홈화면\ 배경.png');
+  background-image: url('../images/home.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -159,19 +159,19 @@ h2 {
   width: 200px;
   z-index: -1;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
-  animation: walk 10s linear infinite;
+  animation: walk 13s linear infinite;
 }
 
 @keyframes walk {
   0% {
-    left: 250px;
+    left: 30px;
     transform: translateY(10px) scaleX(1);
   }
   25% {
     transform: translateY(-5px) scaleX(1);
   }
   50% {
-    left: 25vw;
+    left: 65vw;
     transform: translateY(0px) scaleX(1);
   }
   51% {
@@ -193,19 +193,19 @@ h2 {
   width: 200px;
   z-index: -1;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
-  animation: walk2 10s linear infinite;
+  animation: walk2 13s linear infinite;
 }
 
 @keyframes walk2 {
   0% {
-    left: 250px;
+    right: 20px;
     transform: translateY(0px) scaleX(1);
   }
   25% {
     transform: translateY(-5px) scaleX(1);
   }
   50% {
-    left: 65vw;
+    left: 56vw;
     transform: translateY(0px) scaleX(1);
   }
   51% {
@@ -215,7 +215,7 @@ h2 {
     transform: translateY(-5px) scaleX(-1);
   }
   100% {
-    left: 40px;
+    left: 10px;
     transform: translateY(0px) scaleX(-1);
   }
 }

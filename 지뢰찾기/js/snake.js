@@ -192,18 +192,23 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-const startButton = document.getElementById('startButton');
-startButton.addEventListener('click', () => {
-  document.getElementById('score').style.display = 'block';
-  document.getElementById('gameBoard').style.display = 'grid';
-  document.getElementById('gameOver').style.display = 'block';
-  startButton.style.display = 'none';
-  init();
+// 🔧 핵심 수정된 부분
+document.addEventListener('DOMContentLoaded', () => {
+  const startButton = document.getElementById('startButton');
+  if (startButton) {
+    startButton.addEventListener('click', () => {
+      document.getElementById('score').style.display = 'block';
+      document.getElementById('gameBoard').style.display = 'grid';
+      document.getElementById('gameOver').style.display = 'block';
+      startButton.style.display = 'none';
+      init();
+    });
+  }
 });
 
 const bubbleContainer = document.querySelector('.bubble-container');
 const bubbleCount = 20;
-const bubbleImgSrc = '/images/비눗방울.png';
+const bubbleImgSrc = 'images/비눗방울.png';
 
 for (let i = 0; i < bubbleCount; i++) {
   const bubble = document.createElement('img');
