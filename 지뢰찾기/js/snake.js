@@ -170,6 +170,7 @@ function endGame() {
     '점\n엔터키로 다시 시작해요!';
 }
 
+// 방향키 및 엔터키 컨트롤
 window.addEventListener('keydown', (e) => {
   const key = e.key.toLowerCase();
 
@@ -192,20 +193,19 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// 🔧 핵심 수정된 부분
-document.addEventListener('DOMContentLoaded', () => {
-  const startButton = document.getElementById('startButton');
-  if (startButton) {
-    startButton.addEventListener('click', () => {
-      document.getElementById('score').style.display = 'block';
-      document.getElementById('gameBoard').style.display = 'grid';
-      document.getElementById('gameOver').style.display = 'block';
-      startButton.style.display = 'none';
-      init();
-    });
-  }
-});
+// 시작하기 버튼 이벤트 바로 등록 (DOMContentLoaded 없이)
+const startButton = document.getElementById('startButton');
+if (startButton) {
+  startButton.addEventListener('click', () => {
+    document.getElementById('score').style.display = 'block';
+    document.getElementById('gameBoard').style.display = 'grid';
+    document.getElementById('gameOver').style.display = 'block';
+    startButton.style.display = 'none';
+    init();
+  });
+}
 
+// 비눗방울 효과
 const bubbleContainer = document.querySelector('.bubble-container');
 const bubbleCount = 20;
 const bubbleImgSrc = 'images/비눗방울.png';
@@ -227,6 +227,7 @@ for (let i = 0; i < bubbleCount; i++) {
   bubbleContainer.appendChild(bubble);
 }
 
+// 음악 재생 함수
 function playMusic() {
   const audio = document.getElementById('bg-music');
   audio.muted = false;

@@ -10,6 +10,8 @@ body {
   background-image: url('../images/tutorial.png');
   background-size: auto;
   box-sizing: border-box;
+  align-items: flex-start;
+  padding-top: 130px;
 }
 
 .container {
@@ -140,7 +142,7 @@ body {
 
 #home-btn {
   background-color: #ff8243;
-  border: 2px solid hsl(54, 62%, 78%);
+  border: 2px solid hsla(57, 100%, 68%, 0.901);
   border-radius: 15px;
   padding: 15px 20px;
   font-size: 18px;
@@ -162,4 +164,56 @@ body {
     format('woff2');
   font-weight: normal;
   font-style: normal;
+}
+
+.go-button-container {
+  position: fixed;
+  bottom: 30px;
+  right: 865px;
+  top: 270px;
+  z-index: 10;
+  margin-bottom: 20px;
+}
+
+#go-btn {
+  background-color: #65df84;
+  border: 2px solid hsl(134, 40%, 50%);
+  border-radius: 15px;
+  padding: 10px 15px;
+  font-size: 18px;
+  color: white;
+  font-family: 'KCC-Ganpan';
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#go-btn:hover {
+  background-color: #4fb15f;
+  transform: scale(1.05);
+}
+
+.go2-button-container {
+  position: fixed;
+  bottom: 30px;
+  right: 480px;
+  top: 270px;
+  z-index: 10;
+  margin-bottom: 20px;
+}
+
+#go2-btn {
+  background-color: #65df84;
+  border: 2px solid hsl(134, 40%, 50%);
+  border-radius: 15px;
+  padding: 10px 15px;
+  font-size: 18px;
+  color: white;
+  font-family: 'KCC-Ganpan';
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#go2-btn:hover {
+  background-color: #4fb15f;
+  transform: scale(1.05);
 }

@@ -8,17 +8,11 @@
   </head>
   <body>
     <h1>Snake 게임</h1>
-    <button id="startButton">시작하기</button>
+    <button id="startButton">START&#127754;</button>
 
     <div id="score" style="display: none">점수: 0</div>
     <div id="gameBoard" style="display: none"></div>
     <div id="gameOver" style="display: none"></div>
-
-    <div class="home-button-container">
-      <button id="home-btn" onclick="location.href='home.html'">
-        메인화면🏠
-      </button>
-    </div>
 
     <div class="bubble-container"></div>
 
@@ -34,6 +28,12 @@
       <button id="music-btn" onclick="playMusic()">🎵 음악 재생하기</button>
     </div>
 
-    <script type="text/javascript" src="js/snake.js"></script>
+    <div class="home-button-container">
+      <button id="home-btn" onclick="location.href='home.html'">
+        메인화면🏠
+      </button>
+    </div>
+
+    <script type="text/javascript" src="js/snake.js" defer></script>
   </body>
 </html>
